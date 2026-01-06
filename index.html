@@ -619,7 +619,32 @@
             background: #2ed573;
         }
 
-        /* Responsive */
+        /* Styling untuk modal e-commerce dan game */
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            background: var(--gold-dark);
+            transform: scale(1.1);
+        }
+
+        /* Responsive untuk modal */
         @media (max-width: 1100px) {
             h1 { font-size: 3.2rem; }
             h2 { font-size: 2.4rem; }
@@ -684,6 +709,23 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Responsive untuk modal game */
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal-content h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+
+            .modal-close-btn {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -701,6 +743,68 @@
             .btn {
                 padding: 14px 28px;
             }
+
+            /* Responsive untuk game canvas */
+            .game-container canvas {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+        }
+
+        /* Game controls styling */
+        .game-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .game-info-panel {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: rgba(10, 36, 99, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .game-info-item {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .snake-color-selector {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .snake-color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .snake-color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .snake-color-option.active {
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
     </style>
 </head>
@@ -730,11 +834,11 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h3>Halo, saya</h3>
+                    <h3>Hallo, saya</h3>
                     <h1>Rahmat Hidayat</h1>
                     <h3>Developer & <span style="color: var(--gold);">Entrepreneur</span></h3>
-                    <p>Seorang profesional dengan passion dalam pengembangan game 2D, aplikasi web, dan pengelolaan bisnis kuliner. Membangun solusi digital kreatif dengan sentuhan elegan dan fungsional.</p>
-                    
+                    <p>Seorang profesional dengan passion dalam pengembangan game, aplikasi web, dan pengelolaan bisnis kuliner. Membangun solusi digital kreatif dengan sentuhan elegan dan fungsional.</p>
+                
                     <div class="hero-btns">
                         <a href="#projects" class="btn">Lihat Projek</a>
                         <a href="#contact" class="btn" style="background: var(--navy);">Hubungi Saya</a>
@@ -820,7 +924,7 @@
                     <div class="project-badge">E-commerce</div>
                     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kantin Rahmat" class="project-img">
                     <div class="project-info">
-                        <h3>Kantin Rahmat</h3>
+                        <h3>Kantin Anti Lapar</h3>
                         <p>Platform e-commerce untuk bisnis kantin dengan 10 menu makanan dan minuman terbaik. Fitur keranjang dengan penyimpanan data pelanggan dan notifikasi pemesanan.</p>
                         <div class="project-links">
                             <a href="#ecommerce" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Kunjungi Kantin</a>
@@ -830,26 +934,12 @@
                 
                 <!-- Game 1: Game Cacing -->
                 <div class="project-card">
-                    <div class="project-badge">Game 2D</div>
                     <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Game Cacing" class="project-img">
                     <div class="project-info">
                         <h3>Game Cacing</h3>
-                        <p>Game snake klasik dengan sistem level, efek suara, dan kontrol yang lebih lengkap. Makan makanan untuk naik level dengan target 100 poin per level!</p>
+                        <p>Game snake klasik dengan pilihan warna cacing, makanan berbeda setiap dimakan, dan sistem level progresif. Kontrol cacing untuk makan makanan!</p>
                         <div class="project-links">
                             <a href="#" class="btn btn-game1" style="padding: 10px 20px; font-size: 0.9rem;">Mainkan Game</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Game 3: Memancing Ikan -->
-                <div class="project-card">
-                    <div class="project-badge">Game 2D</div>
-                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Memancing Ikan" class="project-img">
-                    <div class="project-info">
-                        <h3>Memancing Ikan</h3>
-                        <p>Game memancing ikan dengan 5 pilihan pancingan keren dan sistem level. Tangkap ikan sebanyak mungkin untuk mencapai target 100 poin per level!</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-game3" style="padding: 10px 20px; font-size: 0.9rem;">Mainkan Game</a>
                         </div>
                     </div>
                 </div>
@@ -867,8 +957,8 @@
                     <div class="service-icon">
                         <i class="fas fa-gamepad"></i>
                     </div>
-                    <h3>Pengembangan Game 2D</h3>
-                    <p>Membuat game 2D dengan HTML5 Canvas dan JavaScript. Game responsif, menarik, dan dapat dimainkan di berbagai perangkat.</p>
+                    <h3>Pengembangan Game</h3>
+                    <p>Membuat game dengan HTML5 Canvas dan JavaScript. Game responsif, menarik, dan dapat dimainkan di berbagai perangkat.</p>
                 </div>
                 
                 <div class="service-card">
@@ -906,7 +996,7 @@
                         </div>
                         <div>
                             <h4>Lokasi</h4>
-                            <p>Jakarta, Indonesia</p>
+                            <p>Lombok Timur, Nusa Tenggara Barat, Indonesia</p>
                         </div>
                     </div>
                     
@@ -916,7 +1006,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>rahmathidayat@example.com</p>
+                            <p>rahmat08450@gmail.com</p>
                         </div>
                     </div>
                     
@@ -926,7 +1016,7 @@
                         </div>
                         <div>
                             <h4>Telepon</h4>
-                            <p>+62 812 3456 7890</p>
+                            <p>+6287838141227</p>
                         </div>
                     </div>
                     
@@ -991,22 +1081,21 @@
                     <ul class="footer-links">
                         <li><a href="#ecommerce">Kantin Rahmat</a></li>
                         <li><a href="#game1">Game Cacing</a></li>
-                        <li><a href="#game3">Memancing Ikan</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Kontak</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
-                        <li><i class="fas fa-envelope"></i> rahmathidayat@example.com</li>
-                        <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lombok Timur, Nusa Tenggara Barat, Indonesia</li>
+                        <li><i class="fas fa-envelope"></i> rahmat08450@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +6287838141227</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Rahmat Hidayat. All rights reserved. | Portfolio Mewah</p>
+                <p>&copy; 2026 Rahmat Hidayat. All rights reserved. | Portfolio Mewah</p>
             </div>
         </div>
     </footer>
@@ -1014,7 +1103,9 @@
     <!-- Modal untuk Game & E-commerce -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
+            <button class="close-modal modal-close-btn" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
             <div id="modal-body">
                 <!-- Konten modal akan dimuat di sini -->
             </div>
@@ -1085,215 +1176,442 @@
             }, 3000);
         }
         
-// E-commerce Kantin Rahmat Lengkap dengan 10 Menu & Fitur Baru
-document.querySelector('a[href="#ecommerce"]').addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    // Data Menu Kantin
-    const daftarMenu = [
-        { id: 1, nama: "Nasi Goreng Spesial", harga: 25000, icon: "🍛", desc: "Nasi goreng telur & ayam", color: "linear-gradient(135deg, #ff9966, #ff5e62)" },
-        { id: 2, nama: "Mie Ayam Bakso", harga: 22000, icon: "🍜", desc: "Mie ayam & bakso sapi", color: "linear-gradient(135deg, #7EC8E3, #4C8BF5)" },
-        { id: 3, nama: "Ayam Geprek", harga: 28000, icon: "🍗", desc: "Ayam crispy sambal bawang", color: "linear-gradient(135deg, #FFD166, #FF9E6D)" },
-        { id: 4, nama: "Sate Ayam (10 tsk)", harga: 30000, icon: "🍢", desc: "Sate bumbu kacang", color: "linear-gradient(135deg, #06D6A0, #0CB48A)" },
-        { id: 5, nama: "Gado-gado", harga: 20000, icon: "🥗", desc: "Sayuran bumbu kacang", color: "linear-gradient(135deg, #EF476F, #D43A63)" },
-        { id: 6, nama: "Es Teh Manis", harga: 8000, icon: "🍹", desc: "Es teh segar", color: "linear-gradient(135deg, #118AB2, #0A6C8F)" },
-        { id: 7, nama: "Jus Alpukat", harga: 18000, icon: "🥤", desc: "Alpukat & susu cokelat", color: "linear-gradient(135deg, #FFD166, #F4A261)" },
-        { id: 8, nama: "Es Cincau", harga: 12000, icon: "🧋", desc: "Cincau gula merah", color: "linear-gradient(135deg, #06D6A0, #04B486)" },
-        { id: 9, nama: "Kopi Susu", harga: 15000, icon: "☕", desc: "Kopi hitam & susu segar", color: "linear-gradient(135deg, #EF476F, #D43A63)" },
-        { id: 10, nama: "Air Mineral", harga: 5000, icon: "💧", desc: "Air botol 600ml", color: "linear-gradient(135deg, #7EC8E3, #4C8BF5)" }
-    ];
-
-    let menuHtml = '';
-    daftarMenu.forEach(item => {
-        menuHtml += `
-            <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <div style="width: 100%; height: 100px; background: ${item.color}; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">${item.icon}</div>
-                <h4 style="margin-bottom: 5px; font-size: 1rem;">${item.nama}</h4>
-                <p style="color: #666; font-size: 0.8rem; height: 30px;">${item.desc}</p>
-                <p style="font-weight: bold; color: #d4af37; margin: 10px 0;">Rp ${item.harga.toLocaleString()}</p>
-                <button class="btn add-to-cart" data-item="${item.nama}" data-price="${item.harga}" style="padding: 8px; font-size: 0.8rem; width: 100%; background: #1a2a6c; color: white; border: none; border-radius: 5px; cursor: pointer;">+ Keranjang</button>
-            </div>
-        `;
-    });
-
-    modalBody.innerHTML = `
-        <h2 style="margin-bottom: 10px;">🛒 Kantin Rahmat</h2>
-        <p style="text-align: center; margin-bottom: 25px;">Silakan pilih menu favorit Anda</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-bottom: 30px;">
-            ${menuHtml}
-        </div>
-        
-        <div style="background: #1a2a6c; color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
-            <h3 style="color: white; margin-bottom: 20px; text-align: center;">Konfirmasi Pesanan</h3>
+        // KANTIN RAHMAT - DIPERBAIKI DENGAN FOTO MAKANAN
+        document.querySelector('a[href="#ecommerce"]').addEventListener('click', (e) => {
+            e.preventDefault();
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <input type="text" id="customer-name" placeholder="Nama Anda" style="padding: 12px; border-radius: 8px; border: none;">
-                <input type="number" id="customer-whatsapp" placeholder="No. WhatsApp" style="padding: 12px; border-radius: 8px; border: none;">
-            </div>
-            
-            <div id="cart-items" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin-bottom: 15px; min-height: 50px;">
-                <p style="text-align: center; color: #ccc;">Keranjang masih kosong</p>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; border-top: 1px solid rgba(255,255,255,0.2); pt: 10px;">
-                <span>Total:</span>
-                <span>Rp <span id="cart-total">0</span></span>
-            </div>
-            
-            <div style="display: flex; gap: 10px;">
-                <button id="clear-cart" style="background: #ff5e62; color: white; border: none; padding: 12px; border-radius: 8px; flex: 1; cursor: pointer;">Hapus</button>
-                <button id="checkout-btn" style="background: #f1c40f; color: #1a2a6c; border: none; padding: 12px; border-radius: 8px; flex: 2; font-weight: bold; cursor: pointer;">PESAN SEKARANG</button>
-            </div>
-        </div>
-        
-        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
-            <h4 style="margin-bottom: 15px; color: #1a2a6c;">📋 Riwayat Pesanan</h4>
-            <div id="order-history" style="overflow-x: auto;">
-                <p style="text-align: center; color: #999;">Belum ada pesanan.</p>
-            </div>
-        </div>
+            const PASS_ADMIN = "rahmat123";
 
-        <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
-    `;
+            // DATA MENU DENGAN FOTO MAKANAN REALISTIS
+            let daftarMenu = [
+                { 
+                    id: 1, 
+                    nama: "Nasi Goreng Spesial", 
+                    harga: 25000, 
+                    foto: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 2, 
+                    nama: "Mie Ayam Bakso", 
+                    harga: 22000, 
+                    foto: "https://images.unsplash.com/photo-1612874748456-5eabd1cbb5d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 3, 
+                    nama: "Ayam Geprek", 
+                    harga: 28000, 
+                    foto: "https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 4, 
+                    nama: "Sate Ayam (10 tusuk)", 
+                    harga: 30000, 
+                    foto: "https://images.unsplash.com/photo-1599058532867-f4dab6bf138c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 5, 
+                    nama: "Gado-gado", 
+                    harga: 20000, 
+                    foto: "https://images.unsplash.com/photo-1585937421612-0c3b6ccdf77c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 6, 
+                    nama: "Es Teh Manis", 
+                    harga: 8000, 
+                    foto: "https://images.unsplash.com/photo-1561125468-2cd5d4f0b7f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 7, 
+                    nama: "Jus Alpukat", 
+                    harga: 18000, 
+                    foto: "https://images.unsplash.com/photo-1623065121674-50d2c05049d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 8, 
+                    nama: "Es Cincau", 
+                    harga: 12000, 
+                    foto: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 9, 
+                    nama: "Kopi Susu", 
+                    harga: 15000, 
+                    foto: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                },
+                { 
+                    id: 10, 
+                    nama: "Air Mineral", 
+                    harga: 5000, 
+                    foto: "https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    stok: true 
+                }
+            ];
 
-    modal.style.display = 'flex';
-    initKantinLogic();
-});
+            // TAMPILAN DASHBOARD
+            modalBody.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; background:#1a2a6c; padding:10px; border-radius:10px; color:white;">
+                    <h2 style="margin:0; font-size:1.2rem;">Kantin Anti Lapar</h2>
+                    <button id="mode-toggle" style="background:#f1c40f; border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold;">MODE ADMIN</button>
+                </div>
 
-function initKantinLogic() {
-    let cart = [];
-    const cartItemsDiv = document.getElementById('cart-items');
-    const cartTotalSpan = document.getElementById('cart-total');
-    const sound = document.getElementById('notif-sound');
+                <div id="pelanggan-section">
+                    <div style="margin-bottom:20px;">
+                        <input type="text" id="search-menu" placeholder="🔍 Cari menu..." 
+                               style="width:100%; padding:12px; border-radius:8px; border:2px solid var(--gold); font-size:1rem;">
+                    </div>
+                    
+                    <div id="menu-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:15px; margin-bottom:20px;"></div>
+                    
+                    <div style="background:#fff; border:2px solid #1a2a6c; padding:15px; border-radius:15px;">
+                        <h3 style="margin-top:0; color:#1a2a6c;">Konfirmasi Pesanan</h3>
+                        <input type="text" id="p-nama" placeholder="Nama Anda" 
+                               style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd; font-size:1rem;">
+                        <input type="number" id="p-wa" placeholder="No WhatsApp (contoh: 6287838141227)" 
+                               style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd; font-size:1rem;">
+                        
+                        <div id="keranjang-list" style="background:#f9f9f9; padding:10px; border-radius:8px; margin-bottom:10px; font-size:0.9rem; max-height:200px; overflow-y:auto;"></div>
+                        
+                        <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.1rem; margin-bottom:15px;">
+                            <span>Total:</span> <span id="p-total">Rp 0</span>
+                        </div>
+                        <button id="btn-pesan" style="width:100%; background:#25D366; color:white; border:none; padding:15px; border-radius:10px; font-weight:bold; cursor:pointer; font-size:1rem;">KONFIRMASI KE KASIR</button>
+                        <p style="text-align:center; margin-top:10px; font-size:0.8rem; color:#666;">Pesanan akan diproses setelah konfirmasi ke kasir</p>
+                    </div>
+                </div>
 
-    // Tambah ke Keranjang
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = btn.getAttribute('data-item');
-            const price = parseInt(btn.getAttribute('data-price'));
-            cart.push({ item, price });
-            renderCart();
-        });
-    });
-
-    function renderCart() {
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = '<p style="text-align: center; color: #ccc;">Keranjang masih kosong</p>';
-            cartTotalSpan.innerText = '0';
-            return;
-        }
-        let html = '<ul style="list-style: none; padding: 0;">';
-        let total = 0;
-        cart.forEach((c, index) => {
-            html += `<li style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem;">
-                <span>${c.item}</span>
-                <span>Rp ${c.price.toLocaleString()}</span>
-            </li>`;
-            total += c.price;
-        });
-        html += '</ul>';
-        cartItemsDiv.innerHTML = html;
-        cartTotalSpan.innerText = total.toLocaleString();
-    }
-
-    document.getElementById('clear-cart').addEventListener('click', () => {
-        cart = [];
-        renderCart();
-    });
-
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-        const name = document.getElementById('customer-name').value;
-        const wa = document.getElementById('customer-whatsapp').value;
-        const total = cartTotalSpan.innerText;
-
-        if (!name || !wa || cart.length === 0) {
-            alert("Harap isi Nama, No WA, dan pilih Menu!");
-            return;
-        }
-
-        // Efek Suara
-        sound.play();
-
-        // Notifikasi Keranjang Kuning
-        alert(`🟡🛒 PESANAN BERHASIL!\n\nHalo ${name}, pesanan Anda telah kami terima.\nTotal Bayar: Rp ${total}\nKami akan menghubungi ke nomor: ${wa}`);
-
-        // Simpan Data
-        const listPesanan = cart.map(c => c.item).join(", ");
-        const orders = JSON.parse(localStorage.getItem('riwayat_kantin') || '[]');
-        orders.push({ name, wa, listPesanan, total, date: new Date().toLocaleTimeString() });
-        localStorage.setItem('riwayat_kantin', JSON.stringify(orders));
-
-        // Reset
-        cart = [];
-        document.getElementById('customer-name').value = '';
-        document.getElementById('customer-whatsapp').value = '';
-        renderCart();
-        renderHistory();
-    });
-
-    function renderHistory() {
-        const historyDiv = document.getElementById('order-history');
-        const orders = JSON.parse(localStorage.getItem('riwayat_kantin') || '[]');
-        
-        if (orders.length === 0) return;
-
-        let table = `
-            <table style="width: 100%; border-collapse: collapse; min-width: 400px;">
-                <tr style="background: #1a2a6c; color: white; text-align: left;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">Nama</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Pesanan</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Total</th>
-                </tr>
-        `;
-
-        orders.slice().reverse().forEach(o => {
-            table += `
-                <tr style="background: white;">
-                    <td style="padding: 10px; border: 1px solid #ddd;"><b>${o.name}</b><br><small>${o.wa}</small></td>
-                    <td style="padding: 10px; border: 1px solid #ddd; font-size: 0.8rem;">${o.listPesanan}</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Rp ${o.total}</td>
-                </tr>
+                <div id="admin-section" style="display:none;">
+                    <div style="background:#eee; padding:15px; border-radius:10px; margin-bottom:20px;">
+                        <p style="margin:0; font-weight:bold; font-size:1.1rem;">Total Cuan Hari Ini: <span id="cuan-hari-ini" style="color:green;">Rp 0</span></p>
+                        <button id="reset-data" style="font-size:0.8rem; color:red; border:none; background:none; cursor:pointer; padding:5px 0;">[Reset Laporan Harian]</button>
+                    </div>
+                    <div id="admin-orders" style="display:grid; gap:15px; max-height:400px; overflow-y:auto; padding:10px;"></div>
+                </div>
             `;
-        });
-        table += '</table>';
-        historyDiv.innerHTML = table;
-    }
 
-    renderHistory();
-}
-        // Game 1: Game Cacing (Snake Game) dengan Level & Suara
+            // LOGIKA PROGRAM
+            let keranjang = {};
+
+            // Render Menu (Pelanggan) dengan foto makanan
+            function renderMenu(filter = '') {
+                const grid = document.getElementById('menu-grid');
+                grid.innerHTML = '';
+                daftarMenu.forEach(item => {
+                    if(!item.stok) return;
+                    if(filter && !item.nama.toLowerCase().includes(filter.toLowerCase())) return;
+                    
+                    grid.innerHTML += `
+                        <div style="background:white; padding:12px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                            <div style="height:100px; background:#f8f9fa; border-radius:8px; overflow:hidden; margin-bottom:8px;">
+                                <img src="${item.foto}" alt="${item.nama}" style="width:100%; height:100%; object-fit:cover;">
+                            </div>
+                            <h5 style="margin:8px 0; font-size:0.9rem; min-height:40px; display:flex; align-items:center; justify-content:center;">${item.nama}</h5>
+                            <p style="font-size:0.9rem; font-weight:bold; color:#d48307;">Rp ${item.harga.toLocaleString()}</p>
+                            <button class="add-btn" data-id="${item.id}" style="width:100%; background:#1a2a6c; color:white; border:none; border-radius:5px; padding:8px; font-size:0.8rem; cursor:pointer; transition:0.3s;">
+                                + Keranjang
+                            </button>
+                        </div>`;
+                });
+                
+                document.querySelectorAll('.add-btn').forEach(b => {
+                    b.onclick = () => {
+                        const id = b.dataset.id;
+                        const item = daftarMenu.find(m => m.id == id);
+                        
+                        // Tampilkan notifikasi hijau ketika item ditambahkan
+                        showNotification(`${item.nama} ditambahkan ke keranjang!`, 'success');
+                        
+                        if(keranjang[id]) {
+                            keranjang[id].qty++;
+                        } else {
+                            keranjang[id] = { 
+                                nama: item.nama, 
+                                harga: item.harga, 
+                                qty: 1 
+                            };
+                        }
+                        renderKeranjang();
+                    };
+                });
+            }
+
+            function renderKeranjang() {
+                const list = document.getElementById('keranjang-list');
+                let html = ''; 
+                let total = 0;
+                
+                Object.keys(keranjang).forEach(k => {
+                    const item = keranjang[k];
+                    total += (item.harga * item.qty);
+                    html += `<div style="margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid #eee;">
+                                <strong>${item.nama}</strong> (x${item.qty}) 
+                                <span style="float:right; font-weight:bold;">Rp ${(item.harga * item.qty).toLocaleString()}</span>
+                             </div>`;
+                });
+                
+                list.innerHTML = html || '<div style="text-align:center; color:#888;">Keranjang kosong</div>';
+                document.getElementById('p-total').innerText = "Rp " + total.toLocaleString();
+            }
+
+            // Tombol Pesan - DIPERBAIKI: Konfirmasi ke kasir saja
+            document.getElementById('btn-pesan').onclick = () => {
+                const nama = document.getElementById('p-nama').value;
+                const wa = document.getElementById('p-wa').value;
+                const total = document.getElementById('p-total').innerText;
+
+                if(!nama || !wa || Object.keys(keranjang).length === 0) {
+                    showNotification("Data tidak lengkap! Harap isi semua kolom.", 'error');
+                    return;
+                }
+
+                // Validasi nomor WhatsApp
+                const waRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+                if(!waRegex.test(wa)) {
+                    showNotification("Format nomor WhatsApp tidak valid!", 'error');
+                    return;
+                }
+
+                const orderID = "ANT-" + Math.floor(Math.random() * 900 + 100);
+                const items = Object.values(keranjang).map(i => `${i.qty}x ${i.nama}`).join(", ");
+
+                const riwayat = JSON.parse(localStorage.getItem('kantin_db_pro') || '[]');
+                riwayat.push({ 
+                    id: orderID, 
+                    nama, 
+                    wa, 
+                    items, 
+                    total, 
+                    status: "🟡 Menunggu Konfirmasi", 
+                    time: new Date().toLocaleTimeString('id-ID'),
+                    date: new Date().toLocaleDateString('id-ID')
+                });
+                localStorage.setItem('kantin_db_pro', JSON.stringify(riwayat));
+
+                showNotification(`NOMOR ANTREAN: ${orderID} - Silakan konfirmasi ke kasir!`, 'success');
+                
+                // Tampilkan struk pesanan
+                const struk = `
+                    ===============================
+                    KANTIN ANTI LAPAR
+                    ===============================
+                    Nomor Antrean: ${orderID}
+                    Nama: ${nama}
+                    WhatsApp: ${wa}
+                    Waktu: ${new Date().toLocaleTimeString('id-ID')}
+                    Tanggal: ${new Date().toLocaleDateString('id-ID')}
+                    -------------------------------
+                    DAFTAR PESANAN:
+                    ${items.split(', ').map(item => `  • ${item}`).join('\n')}
+                    -------------------------------
+                    TOTAL: ${total}
+                    ===============================
+                    *Silakan tunjukkan struk ini ke kasir*
+                    ===============================
+                `;
+                
+                alert(struk);
+                
+                keranjang = {}; 
+                renderKeranjang();
+                document.getElementById('p-nama').value = '';
+                document.getElementById('p-wa').value = '';
+            };
+
+            // Fitur pencarian
+            document.getElementById('search-menu').addEventListener('input', function(e) {
+                renderMenu(e.target.value);
+            });
+
+            // LOGIKA ADMIN
+            document.getElementById('mode-toggle').onclick = () => {
+                const p = prompt("Password Admin:");
+                if(p === PASS_ADMIN) {
+                    document.getElementById('pelanggan-section').style.display = 'none';
+                    document.getElementById('admin-section').style.display = 'block';
+                    renderAdmin();
+                    showNotification("Mode Admin diaktifkan", 'success');
+                } else {
+                    showNotification("Password salah!", 'error');
+                }
+            };
+
+            function renderAdmin() {
+                const db = JSON.parse(localStorage.getItem('kantin_db_pro') || '[]');
+                const container = document.getElementById('admin-orders');
+                let cuan = 0;
+                container.innerHTML = '';
+
+                db.slice().reverse().forEach(o => {
+                    const isSelesai = o.status === "✅ Selesai";
+                    if(isSelesai) cuan += parseInt(o.total.replace(/\D/g,'') || 0);
+
+                    container.innerHTML += `
+                        <div style="background:white; border:1px solid #ddd; padding:12px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <b style="font-size:0.9rem;">[${o.id}] ${o.nama}</b>
+                                <span style="font-size:0.7rem; color:gray;">${o.time}</span>
+                            </div>
+                            <p style="font-size:0.8rem; margin:5px 0; color:#555;"><strong>WhatsApp:</strong> ${o.wa}</p>
+                            <p style="font-size:0.8rem; margin:5px 0; color:#555;"><strong>Pesanan:</strong> ${o.items}</p>
+                            <p style="font-size:0.8rem; margin:5px 0; color:#555;"><strong>Total:</strong> ${o.total}</p>
+                            <div style="font-size:0.8rem; margin-bottom:8px;">
+                                <strong>Status:</strong> <span style="font-weight:bold; color:${o.status === '✅ Selesai' ? 'green' : o.status === '🟠 Diproses' ? 'orange' : '#f1c40f'}">${o.status}</span>
+                            </div>
+                            <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+                                <button onclick="updateAdmStatus('${o.id}', '🟠 Diproses')" 
+                                        style="flex:1; min-width:80px; background:#f39c12; color:white; font-size:0.7rem; border:none; padding:6px; border-radius:4px; cursor:pointer;">
+                                    Proses
+                                </button>
+                                <button onclick="panggilPelanggan('${o.id}', '${o.nama}')" 
+                                        style="flex:1; min-width:80px; background:#2ecc71; color:white; font-size:0.7rem; border:none; padding:6px; border-radius:4px; cursor:pointer;">
+                                    Panggil
+                                </button>
+                                <button onclick="hapusAdm('${o.id}')" 
+                                        style="background:#e74c3c; color:white; border:none; padding:6px 10px; border-radius:4px; cursor:pointer; font-size:0.8rem;">
+                                    ❌
+                                </button>
+                            </div>
+                        </div>`;
+                });
+                document.getElementById('cuan-hari-ini').innerText = "Rp " + cuan.toLocaleString();
+            }
+
+            window.updateAdmStatus = (id, status) => {
+                let db = JSON.parse(localStorage.getItem('kantin_db_pro') || '[]');
+                const idx = db.findIndex(x => x.id === id);
+                if(idx !== -1) {
+                    db[idx].status = status;
+                    localStorage.setItem('kantin_db_pro', JSON.stringify(db));
+                    renderAdmin();
+                    showNotification(`Status pesanan ${id} diperbarui`, 'success');
+                }
+            };
+
+            window.panggilPelanggan = (id, nama) => {
+                // Suara panggilan yang berbeda (lebih ramah)
+                const suaraPanggilan = [
+                    "Pesanan nomor " + id + " atas nama " + nama + ", sudah siap. Silakan diambil di kasir.",
+                    "Panggilan untuk nomor antrean " + id + ", pesanan sudah jadi.",
+                    nama + ", pesanan Anda dengan nomor " + id + " sudah selesai."
+                ];
+                
+                const pesan = suaraPanggilan[Math.floor(Math.random() * suaraPanggilan.length)];
+                const speech = new SpeechSynthesisUtterance(pesan);
+                speech.lang = 'id-ID';
+                speech.rate = 0.9; // Lebih lambat dan jelas
+                speech.pitch = 1.2; // Suara lebih ramah
+                
+                // Cari data pesanan untuk update status
+                let db = JSON.parse(localStorage.getItem('kantin_db_pro') || '[]');
+                const idx = db.findIndex(x => x.id === id);
+                if(idx !== -1) {
+                    db[idx].status = "✅ Selesai";
+                    localStorage.setItem('kantin_db_pro', JSON.stringify(db));
+                    renderAdmin();
+                }
+                
+                // Jalankan text-to-speech
+                window.speechSynthesis.speak(speech);
+                showNotification(`Memanggil pelanggan ${nama} (${id})`, 'success');
+            };
+
+            window.hapusAdm = (id) => {
+                if(confirm(`Hapus pesanan ${id}?`)) {
+                    let db = JSON.parse(localStorage.getItem('kantin_db_pro') || '[]');
+                    db = db.filter(x => x.id !== id);
+                    localStorage.setItem('kantin_db_pro', JSON.stringify(db));
+                    renderAdmin();
+                    showNotification(`Pesanan ${id} dihapus`, 'success');
+                }
+            };
+
+            document.getElementById('reset-data').onclick = () => {
+                if(confirm("Hapus semua riwayat harian?")) {
+                    localStorage.removeItem('kantin_db_pro');
+                    renderAdmin();
+                    showNotification("Riwayat harian direset", 'success');
+                }
+            };
+
+            // Mulai render pelanggan
+            modal.style.display = 'flex';
+            renderMenu();
+            renderKeranjang();
+        });
+        
+        // GAME CACING - DIPERBAIKI
         document.querySelector('.btn-game1').addEventListener('click', (e) => {
             e.preventDefault();
             modalBody.innerHTML = `
-                <h2 style="margin-bottom: 20px;">Game Cacing - Level System</h2>
-                <div style="background: #2e8b57; padding: 20px; border-radius: 10px; margin-bottom: 30px; position: relative;">
-                    <canvas id="gameCanvas1" width="700" height="400" style="display: block; margin: 0 auto; background: #228b22; border: 2px solid #006400;"></canvas>
-                    <div id="game-info1" style="position: absolute; top: 25px; left: 25px; color: white; font-size: 1.2rem; font-weight: bold; display: flex; flex-direction: column; gap: 5px;">
-                        <div>Skor: <span id="score1">0</span> / <span id="target-score1">100</span></div>
-                        <div>Level: <span id="level1">1</span></div>
-                        <div>Panjang: <span id="length1">3</span></div>
+                <h2 style="margin-bottom: 20px; text-align: center;">Game Cacing - Snake Game</h2>
+                
+                <div class="game-info-panel">
+                    <div class="game-info-item">
+                        <div>Skor</div>
+                        <div style="font-size: 1.2rem; font-weight: bold; color: var(--navy);">
+                            <span id="score1">0</span> / <span id="target-score1">100</span>
+                        </div>
                     </div>
-                    <div id="highScore1" style="position: absolute; top: 25px; right: 25px; color: white; font-size: 1.2rem; font-weight: bold;">Rekor: 0</div>
+                    <div class="game-info-item">
+                        <div>Level</div>
+                        <div style="font-size: 1.2rem; font-weight: bold; color: var(--gold);" id="level1">1</div>
+                    </div>
+                    <div class="game-info-item">
+                        <div>Panjang</div>
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #2e8b57;" id="length1">3</div>
+                    </div>
+                    <div class="game-info-item">
+                        <div>Rekor</div>
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #ff4757;" id="highScore1">0</div>
+                    </div>
                 </div>
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <button id="startGame1" class="btn" style="margin-right: 10px;">Mulai Game</button>
-                    <button id="pauseGame1" class="btn" style="background: #ff9900; margin-right: 10px;">Jeda</button>
-                    <button id="resetGame1" class="btn" style="background: var(--navy);">Reset</button>
+
+                <div style="margin: 20px 0; text-align: center;">
+                    <h4 style="margin-bottom: 10px; color: var(--navy);">Pilih Warna Cacing:</h4>
+                    <div class="snake-color-selector">
+                        <div class="snake-color-option active" data-color="#2e8b57" style="background: #2e8b57;"></div>
+                        <div class="snake-color-option" data-color="#ff6b6b" style="background: #ff6b6b;"></div>
+                        <div class="snake-color-option" data-color="#4ecdc4" style="background: #4ecdc4;"></div>
+                        <div class="snake-color-option" data-color="#ffe66d" style="background: #ffe66d;"></div>
+                        <div class="snake-color-option" data-color="#a29bfe" style="background: #a29bfe;"></div>
+                        <div class="snake-color-option" data-color="#fd79a8" style="background: #fd79a8;"></div>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; background: #f8f9fa; padding: 15px; border-radius: 10px;">
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px; position: relative; overflow: hidden;">
+                    <div style="position: relative;">
+                        <canvas id="gameCanvas1" width="600" height="400" 
+                                style="display: block; margin: 0 auto; background: #1a2a6c; border-radius: 8px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button id="startGame1" class="btn" style="min-width: 120px;">Mulai Game</button>
+                    <button id="pauseGame1" class="btn" style="background: #ff9900; min-width: 120px;">Jeda</button>
+                    <button id="resetGame1" class="btn" style="background: var(--navy); min-width: 120px;">Reset</button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; background: #f8f9fa; padding: 15px; border-radius: 10px;">
                     <div>
                         <h4 style="margin-bottom: 10px; color: var(--navy);">Kontrol:</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li><strong>↑</strong> = Atas</li>
-                            <li><strong>↓</strong> = Bawah</li>
-                            <li><strong>←</strong> = Kiri</li>
-                            <li><strong>→</strong> = Kanan</li>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                            <li><strong>↑ / W</strong> = Atas</li>
+                            <li><strong>↓ / S</strong> = Bawah</li>
+                            <li><strong>← / A</strong> = Kiri</li>
+                            <li><strong>→ / D</strong> = Kanan</li>
                         </ul>
                     </div>
                     <div>
                         <h4 style="margin-bottom: 10px; color: var(--navy);">Level Target:</h4>
-                        <ul style="list-style: none; padding: 0;">
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
                             <li><strong>Level 1:</strong> 100 poin</li>
                             <li><strong>Level 2:</strong> 200 poin</li>
                             <li><strong>Level 3:</strong> 300 poin</li>
@@ -1301,8 +1619,10 @@ function initKantinLogic() {
                         </ul>
                     </div>
                 </div>
-                <p><strong>Instruksi:</strong> Kontrol cacing untuk makan makanan. Setiap makanan = 10 poin. Capai target poin untuk naik level! Hindari dinding dan tubuh sendiri.</p>
-                <p><strong>Fitur:</strong> Efek suara saat makan dan tabrakan, sistem level progresif, kecepatan meningkat tiap level.</p>
+                
+                <p style="font-size: 0.9rem; color: #666; text-align: center; margin-top: 20px;">
+                    <strong>Instruksi:</strong> Kontrol cacing untuk makan makanan. Setiap makanan memberikan poin berbeda. Capai target poin untuk naik level! Hindari dinding dan tubuh sendiri.
+                </p>
             `;
             modal.style.display = 'flex';
             
@@ -1312,291 +1632,7 @@ function initKantinLogic() {
             }, 100);
         });
         
-        // Game 3: Memancing Ikan dengan Pilihan Pancingan & Level
-        document.querySelector('.btn-game3').addEventListener('click', (e) => {
-            e.preventDefault();
-            modalBody.innerHTML = `
-                <h2 style="margin-bottom: 20px;">Memancing Ikan - Pilihan Pancingan</h2>
-                <div style="background: #1e90ff; padding: 20px; border-radius: 10px; margin-bottom: 30px; position: relative;">
-                    <canvas id="gameCanvas3" width="700" height="400" style="display: block; margin: 0 auto; background: #87ceeb; border: 2px solid #1e90ff;"></canvas>
-                    <div id="game-info3" style="position: absolute; top: 25px; left: 25px; color: white; font-size: 1.2rem; font-weight: bold; display: flex; flex-direction: column; gap: 5px;">
-                        <div>Skor: <span id="score3">0</span> / <span id="target-score3">100</span></div>
-                        <div>Level: <span id="level3">1</span></div>
-                        <div>Ikan: <span id="fishCount3">0</span></div>
-                    </div>
-                    <div id="time3" style="position: absolute; top: 25px; right: 25px; color: white; font-size: 1.2rem; font-weight: bold;">Waktu: 60s</div>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <h4 style="margin-bottom: 10px; color: var(--navy);">Pilih Pancingan:</h4>
-                    <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
-                        <button class="fishing-rod-select" data-rod="basic" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🎣 Basic</button>
-                        <button class="fishing-rod-select" data-rod="pro" style="padding: 10px 15px; background: #9b59b6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🎣 Pro</button>
-                        <button class="fishing-rod-select" data-rod="legendary" style="padding: 10px 15px; background: #f39c12; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🎣 Legendary</button>
-                        <button class="fishing-rod-select" data-rod="golden" style="padding: 10px 15px; background: #f1c40f; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🎣 Golden</button>
-                        <button class="fishing-rod-select" data-rod="dragon" style="padding: 10px 15px; background: #e74c3c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🎣 Dragon</button>
-                    </div>
-                    <div id="rod-info" style="background: #f8f9fa; padding: 10px; border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Basic:</strong> Kecepatan normal, ikan biasa | 
-                        <strong>Pro:</strong> +20% kecepatan, ikan lebih banyak | 
-                        <strong>Legendary:</strong> +40% kecepatan, ikan langka | 
-                        <strong>Golden:</strong> +60% kecepatan, poin 2x | 
-                        <strong>Dragon:</strong> +80% kecepatan, poin 3x
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <button id="startGame3" class="btn" style="margin-right: 10px;">Mulai Game</button>
-                    <button id="resetGame3" class="btn" style="background: var(--navy);">Reset</button>
-                </div>
-                
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; background: #f8f9fa; padding: 15px; border-radius: 10px;">
-                    <div>
-                        <h4 style="margin-bottom: 10px; color: var(--navy);">Kontrol:</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li><strong>Klik/Tap:</strong> Lempar kail</li>
-                            <li><strong>Klik ikan:</strong> Tangkap ikan</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="margin-bottom: 10px; color: var(--navy);">Level Target:</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li><strong>Level 1:</strong> 100 poin</li>
-                            <li><strong>Level 2:</strong> 200 poin</li>
-                            <li><strong>Level 3:</strong> 300 poin</li>
-                            <li><strong>Level 4+:</strong> +100 poin/level</li>
-                        </ul>
-                    </div>
-                </div>
-                <p><strong>Instruksi:</strong> Pilih pancingan favorit, lalu klik untuk melempar kail. Tangkap ikan dengan mengklik tepat saat kail mengenai ikan. Capai target poin untuk naik level!</p>
-            `;
-            modal.style.display = 'flex';
-            
-            setTimeout(() => {
-                initGame3();
-            }, 100);
-        });
-        
-        // E-commerce Implementation dengan Penyimpanan Data
-        function initEcommerce() {
-            let cart = [];
-            let subtotal = 0;
-            let orderHistory = JSON.parse(localStorage.getItem('kantinOrderHistory')) || [];
-            
-            // Update cart display
-            function updateCart() {
-                const cartItems = document.getElementById('cart-items');
-                const cartSubtotal = document.getElementById('cart-subtotal');
-                const cartTotal = document.getElementById('cart-total');
-                
-                // Calculate totals
-                subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                
-                // Update displays
-                cartSubtotal.textContent = subtotal.toLocaleString();
-                cartTotal.textContent = subtotal.toLocaleString();
-                
-                // Update cart items list
-                if (cart.length === 0) {
-                    cartItems.innerHTML = '<p style="text-align: center; color: #ccc;">Keranjang kosong</p>';
-                } else {
-                    cartItems.innerHTML = '';
-                    cart.forEach((item, index) => {
-                        const itemElement = document.createElement('div');
-                        itemElement.style.display = 'flex';
-                        itemElement.style.justifyContent = 'space-between';
-                        itemElement.style.alignItems = 'center';
-                        itemElement.style.marginBottom = '12px';
-                        itemElement.style.paddingBottom = '12px';
-                        itemElement.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
-                        
-                        itemElement.innerHTML = `
-                            <div>
-                                <div style="font-weight: bold;">${item.name}</div>
-                                <div style="font-size: 0.85rem; color: #ccc;">Rp ${item.price.toLocaleString()} × ${item.quantity}</div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="font-weight: bold;">Rp ${(item.price * item.quantity).toLocaleString()}</span>
-                                <button class="remove-item" data-index="${index}" style="background: #ff4757; color: white; border: none; border-radius: 4px; width: 24px; height: 24px; cursor: pointer; font-size: 0.8rem;">×</button>
-                            </div>
-                        `;
-                        
-                        cartItems.appendChild(itemElement);
-                    });
-                    
-                    // Add event listeners to remove buttons
-                    document.querySelectorAll('.remove-item').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const index = parseInt(this.getAttribute('data-index'));
-                            removeFromCart(index);
-                        });
-                    });
-                }
-                
-                // Update order history
-                updateOrderHistory();
-            }
-            
-            // Update order history display
-            function updateOrderHistory() {
-                const orderHistoryElement = document.getElementById('order-history');
-                
-                if (orderHistory.length === 0) {
-                    orderHistoryElement.innerHTML = '<p style="color: #666; text-align: center; font-style: italic;">Belum ada riwayat pesanan</p>';
-                } else {
-                    orderHistoryElement.innerHTML = '';
-                    // Show latest 3 orders
-                    orderHistory.slice(-3).reverse().forEach(order => {
-                        const orderElement = document.createElement('div');
-                        orderElement.style.marginBottom = '10px';
-                        orderElement.style.padding = '10px';
-                        orderElement.style.background = 'white';
-                        orderElement.style.borderRadius = '5px';
-                        orderElement.style.borderLeft = '4px solid var(--gold)';
-                        
-                        const orderDate = new Date(order.date).toLocaleDateString('id-ID');
-                        const orderTime = new Date(order.date).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-                        
-                        orderElement.innerHTML = `
-                            <div style="font-weight: bold;">${order.customerName}</div>
-                            <div style="font-size: 0.85rem; color: #666;">${orderDate} ${orderTime}</div>
-                            <div style="font-size: 0.9rem;">Rp ${order.total.toLocaleString()} (${order.itemCount} item)</div>
-                        `;
-                        
-                        orderHistoryElement.appendChild(orderElement);
-                    });
-                }
-            }
-            
-            // Add item to cart
-            function addToCart(itemName, itemPrice) {
-                // Check if item already in cart
-                const existingItemIndex = cart.findIndex(item => item.name === itemName);
-                
-                if (existingItemIndex !== -1) {
-                    // Increase quantity if item already exists
-                    cart[existingItemIndex].quantity++;
-                } else {
-                    // Add new item to cart
-                    cart.push({
-                        name: itemName,
-                        price: itemPrice,
-                        quantity: 1
-                    });
-                }
-                
-                updateCart();
-                showNotification(`${itemName} ditambahkan ke keranjang!`);
-            }
-            
-            // Remove item from cart
-            function removeFromCart(index) {
-                if (index >= 0 && index < cart.length) {
-                    const removedItem = cart[index];
-                    cart.splice(index, 1);
-                    updateCart();
-                    showNotification(`${removedItem.name} dihapus dari keranjang`);
-                }
-            }
-            
-            // Clear cart
-            function clearCart() {
-                if (cart.length > 0) {
-                    cart = [];
-                    updateCart();
-                    showNotification('Keranjang dikosongkan');
-                }
-            }
-            
-            // Checkout
-            function checkout() {
-                const customerName = document.getElementById('customer-name').value.trim();
-                
-                if (cart.length === 0) {
-                    showNotification('Keranjang belanja kosong!', 'error');
-                    return;
-                }
-                
-                if (!customerName) {
-                    showNotification('Masukkan nama pelanggan terlebih dahulu!', 'error');
-                    document.getElementById('customer-name').focus();
-                    return;
-                }
-                
-                // Create order object
-                const order = {
-                    id: Date.now(),
-                    date: new Date().toISOString(),
-                    customerName: customerName,
-                    items: [...cart],
-                    total: subtotal,
-                    itemCount: cart.reduce((sum, item) => sum + item.quantity, 0)
-                };
-                
-                // Add to order history
-                orderHistory.push(order);
-                
-                // Save to localStorage
-                localStorage.setItem('kantinOrderHistory', JSON.stringify(orderHistory));
-                
-                // Generate receipt
-                let receipt = '=== KANTIN RAHMAT ===\n';
-                receipt += `Pelanggan: ${customerName}\n`;
-                receipt += 'Tanggal: ' + new Date().toLocaleDateString('id-ID') + '\n';
-                receipt += 'Waktu: ' + new Date().toLocaleTimeString('id-ID') + '\n';
-                receipt += '----------------------\n';
-                receipt += 'Daftar Pesanan:\n';
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    receipt += `- ${item.name} (${item.quantity}x): Rp ${itemTotal.toLocaleString()}\n`;
-                });
-                
-                receipt += '----------------------\n';
-                receipt += `Subtotal: Rp ${subtotal.toLocaleString()}\n`;
-                receipt += `Total: Rp ${subtotal.toLocaleString()}\n`;
-                receipt += '======================\n';
-                receipt += 'Terima kasih telah berbelanja di Kantin Rahmat!\n';
-                receipt += `Pesanan #${order.id} akan segera diproses.`;
-                
-                // Show receipt
-                alert(receipt);
-                
-                // Show notification
-                showNotification(`Pesanan berhasil! Total: Rp ${subtotal.toLocaleString()}`, 'success');
-                
-                // Reset cart
-                cart = [];
-                document.getElementById('customer-name').value = '';
-                updateCart();
-                
-                // Update order history display
-                updateOrderHistory();
-            }
-            
-            // Add event listeners to "Add to Cart" buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemName = this.getAttribute('data-item');
-                    const itemPrice = parseInt(this.getAttribute('data-price'));
-                    addToCart(itemName, itemPrice);
-                });
-            });
-            
-            // Add event listener to "Clear Cart" button
-            document.getElementById('clear-cart').addEventListener('click', clearCart);
-            
-            // Add event listener to "Checkout" button
-            document.getElementById('checkout-btn').addEventListener('click', checkout);
-            
-            // Load order history from localStorage
-            updateOrderHistory();
-            
-            // Initialize cart display
-            updateCart();
-        }
-        
-        // Game 1 Implementation: Game Cacing dengan Level & Suara
+        // Game 1 Implementation: Game Cacing dengan Pilihan Warna
         function initGame1() {
             const canvas = document.getElementById('gameCanvas1');
             const ctx = canvas.getContext('2d');
@@ -1610,8 +1646,8 @@ function initKantinLogic() {
             const highScoreDisplay = document.getElementById('highScore1');
             
             const gridSize = 20;
-            const gridWidth = canvas.width / gridSize;
-            const gridHeight = canvas.height / gridSize;
+            const gridWidth = Math.floor(canvas.width / gridSize);
+            const gridHeight = Math.floor(canvas.height / gridSize);
             
             let snake = [];
             let food = {};
@@ -1622,40 +1658,31 @@ function initKantinLogic() {
             let score = 0;
             let level = 1;
             let targetScore = 100;
-            let speed = 150; // ms per frame (lower = faster)
+            let speed = 150; // ms per frame
             let highScore = localStorage.getItem('snakeHighScore') || 0;
+            let snakeColor = '#2e8b57'; // Warna default
             
-            // Audio untuk efek suara
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            // Array warna untuk makanan yang berbeda
+            const foodColors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#A29BFE', '#FD79A8', '#00B894', '#FDCB6E', '#6C5CE7'];
+            const foodSizes = [12, 14, 16, 18, 20]; // Ukuran makanan berbeda
+            const foodPoints = [5, 10, 15, 20, 25]; // Poin makanan berbeda
             
-            function playSound(frequency, duration, type = 'sine') {
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume();
-                }
-                
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = frequency;
-                oscillator.type = type;
-                
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + duration);
-            }
+            // Update warna cacing berdasarkan pilihan
+            document.querySelectorAll('.snake-color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.snake-color-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    snakeColor = this.getAttribute('data-color');
+                });
+            });
             
-            highScoreDisplay.textContent = `Rekor: ${highScore}`;
+            highScoreDisplay.textContent = highScore;
             targetScoreDisplay.textContent = targetScore;
             levelDisplay.textContent = level;
             
             // Initialize game
             function init() {
-                // Initialize snake
+                // Initialize snake dengan bentuk bulat
                 snake = [
                     {x: 5, y: 10},
                     {x: 4, y: 10},
@@ -1682,11 +1709,15 @@ function initKantinLogic() {
                 lengthDisplay.textContent = snake.length;
             }
             
-            // Generate food at random position
+            // Generate food dengan properti berbeda
             function generateFood() {
                 food = {
                     x: Math.floor(Math.random() * gridWidth),
-                    y: Math.floor(Math.random() * gridHeight)
+                    y: Math.floor(Math.random() * gridHeight),
+                    color: foodColors[Math.floor(Math.random() * foodColors.length)],
+                    size: foodSizes[Math.floor(Math.random() * foodSizes.length)],
+                    points: foodPoints[Math.floor(Math.random() * foodPoints.length)],
+                    type: Math.floor(Math.random() * 5) // 5 jenis makanan berbeda
                 };
                 
                 // Make sure food doesn't appear on snake
@@ -1701,12 +1732,12 @@ function initKantinLogic() {
             // Draw game elements
             function draw() {
                 // Clear canvas
-                ctx.fillStyle = '#228b22';
+                ctx.fillStyle = '#1a2a6c';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
-                // Draw grid with level-based color
-                ctx.strokeStyle = level >= 3 ? '#7CFC00' : '#32cd32';
-                ctx.lineWidth = level >= 5 ? 1 : 0.5;
+                // Draw grid
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.lineWidth = 0.5;
                 for (let x = 0; x < canvas.width; x += gridSize) {
                     ctx.beginPath();
                     ctx.moveTo(x, 0);
@@ -1720,97 +1751,209 @@ function initKantinLogic() {
                     ctx.stroke();
                 }
                 
-                // Draw snake with level-based colors
+                // Draw snake dengan bentuk bulat
                 snake.forEach((segment, index) => {
+                    // Gradient warna untuk efek visual
+                    let segmentColor = snakeColor;
                     if (index === 0) {
-                        // Snake head - color based on level
-                        let headColor;
-                        if (level >= 5) headColor = '#8B0000'; // Dark red for high levels
-                        else if (level >= 3) headColor = '#8B4513'; // Brown for medium levels
-                        else headColor = '#006400'; // Dark green for low levels
-                        
-                        ctx.fillStyle = headColor;
-                        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
-                        
-                        // Snake eyes
-                        ctx.fillStyle = 'white';
-                        if (direction === 'right') {
-                            ctx.fillRect((segment.x * gridSize) + gridSize - 6, (segment.y * gridSize) + 4, 4, 4);
-                            ctx.fillRect((segment.x * gridSize) + gridSize - 6, (segment.y * gridSize) + gridSize - 8, 4, 4);
-                        } else if (direction === 'left') {
-                            ctx.fillRect((segment.x * gridSize) + 2, (segment.y * gridSize) + 4, 4, 4);
-                            ctx.fillRect((segment.x * gridSize) + 2, (segment.y * gridSize) + gridSize - 8, 4, 4);
-                        } else if (direction === 'up') {
-                            ctx.fillRect((segment.x * gridSize) + 4, (segment.y * gridSize) + 2, 4, 4);
-                            ctx.fillRect((segment.x * gridSize) + gridSize - 8, (segment.y * gridSize) + 2, 4, 4);
-                        } else if (direction === 'down') {
-                            ctx.fillRect((segment.x * gridSize) + 4, (segment.y * gridSize) + gridSize - 6, 4, 4);
-                            ctx.fillRect((segment.x * gridSize) + gridSize - 8, (segment.y * gridSize) + gridSize - 6, 4, 4);
-                        }
+                        // Kepala cacing - lebih terang
+                        ctx.fillStyle = lightenColor(segmentColor, 20);
                     } else {
-                        // Snake body - gradient based on position
-                        const colorValue = Math.floor(255 - (index / snake.length) * 100);
-                        ctx.fillStyle = `rgb(46, 139, ${colorValue})`;
-                        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+                        // Tubuh cacing - lebih gelap untuk bagian belakang
+                        const darkenAmount = (index / snake.length) * 30;
+                        ctx.fillStyle = darkenColor(segmentColor, darkenAmount);
+                    }
+                    
+                    // Gambar lingkaran untuk setiap segment
+                    ctx.beginPath();
+                    ctx.arc(
+                        segment.x * gridSize + gridSize / 2,
+                        segment.y * gridSize + gridSize / 2,
+                        gridSize / 2 - 1,
+                        0,
+                        Math.PI * 2
+                    );
+                    ctx.fill();
+                    
+                    // Mata untuk kepala
+                    if (index === 0) {
+                        ctx.fillStyle = 'white';
                         
-                        // Snake body pattern
-                        ctx.fillStyle = '#32cd32';
-                        ctx.fillRect(segment.x * gridSize + 4, segment.y * gridSize + 4, gridSize - 8, gridSize - 8);
+                        // Posisi mata berdasarkan arah
+                        let eye1X, eye1Y, eye2X, eye2Y;
+                        switch(direction) {
+                            case 'right':
+                                eye1X = segment.x * gridSize + gridSize - 6;
+                                eye1Y = segment.y * gridSize + 6;
+                                eye2X = segment.x * gridSize + gridSize - 6;
+                                eye2Y = segment.y * gridSize + gridSize - 6;
+                                break;
+                            case 'left':
+                                eye1X = segment.x * gridSize + 6;
+                                eye1Y = segment.y * gridSize + 6;
+                                eye2X = segment.x * gridSize + 6;
+                                eye2Y = segment.y * gridSize + gridSize - 6;
+                                break;
+                            case 'up':
+                                eye1X = segment.x * gridSize + 6;
+                                eye1Y = segment.y * gridSize + 6;
+                                eye2X = segment.x * gridSize + gridSize - 6;
+                                eye2Y = segment.y * gridSize + 6;
+                                break;
+                            case 'down':
+                                eye1X = segment.x * gridSize + 6;
+                                eye1Y = segment.y * gridSize + gridSize - 6;
+                                eye2X = segment.x * gridSize + gridSize - 6;
+                                eye2Y = segment.y * gridSize + gridSize - 6;
+                                break;
+                        }
+                        
+                        // Gambar mata
+                        ctx.beginPath();
+                        ctx.arc(eye1X, eye1Y, 3, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        ctx.beginPath();
+                        ctx.arc(eye2X, eye2Y, 3, 0, Math.PI * 2);
+                        ctx.fill();
                     }
                 });
                 
-                // Draw food with level-based appearance
-                let foodColor, foodGlow;
-                if (level >= 5) {
-                    foodColor = '#FFD700'; // Gold for high levels
-                    foodGlow = '#FFA500';
-                } else if (level >= 3) {
-                    foodColor = '#FF4500'; // OrangeRed for medium levels
-                    foodGlow = '#FF8C00';
-                } else {
-                    foodColor = '#ff4500'; // Normal for low levels
-                    foodGlow = '#ff8c00';
+                // Draw food dengan bentuk dan efek berbeda
+                ctx.fillStyle = food.color;
+                
+                // Gambar makanan dengan bentuk berbeda berdasarkan type
+                switch(food.type) {
+                    case 0: // Lingkaran biasa
+                        ctx.beginPath();
+                        ctx.arc(
+                            food.x * gridSize + gridSize / 2,
+                            food.y * gridSize + gridSize / 2,
+                            food.size / 2,
+                            0,
+                            Math.PI * 2
+                        );
+                        ctx.fill();
+                        break;
+                        
+                    case 1: // Bintang
+                        drawStar(
+                            ctx,
+                            food.x * gridSize + gridSize / 2,
+                            food.y * gridSize + gridSize / 2,
+                            5,
+                            food.size / 2,
+                            food.size / 4
+                        );
+                        ctx.fill();
+                        break;
+                        
+                    case 2: // Segitiga
+                        ctx.beginPath();
+                        ctx.moveTo(food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2 - food.size / 2);
+                        ctx.lineTo(food.x * gridSize + gridSize / 2 - food.size / 2, food.y * gridSize + gridSize / 2 + food.size / 2);
+                        ctx.lineTo(food.x * gridSize + gridSize / 2 + food.size / 2, food.y * gridSize + gridSize / 2 + food.size / 2);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                        
+                    case 3: // Kotak
+                        ctx.fillRect(
+                            food.x * gridSize + gridSize / 2 - food.size / 2,
+                            food.y * gridSize + gridSize / 2 - food.size / 2,
+                            food.size,
+                            food.size
+                        );
+                        break;
+                        
+                    case 4: // Diamond
+                        ctx.beginPath();
+                        ctx.moveTo(food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2 - food.size / 2);
+                        ctx.lineTo(food.x * gridSize + gridSize / 2 + food.size / 2, food.y * gridSize + gridSize / 2);
+                        ctx.lineTo(food.x * gridSize + gridSize / 2, food.y * gridSize + gridSize / 2 + food.size / 2);
+                        ctx.lineTo(food.x * gridSize + gridSize / 2 - food.size / 2, food.y * gridSize + gridSize / 2);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
                 }
                 
-                // Food main circle
-                ctx.fillStyle = foodColor;
-                ctx.beginPath();
-                ctx.arc(
+                // Efek glow untuk makanan
+                ctx.shadowColor = food.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+                
+                // Reset shadow
+                setTimeout(() => {
+                    ctx.shadowColor = 'transparent';
+                    ctx.shadowBlur = 0;
+                }, 0);
+                
+                // Tampilkan poin makanan
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 10px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(
+                    food.points,
                     food.x * gridSize + gridSize / 2,
-                    food.y * gridSize + gridSize / 2,
-                    gridSize / 2 - 2,
-                    0,
-                    Math.PI * 2
+                    food.y * gridSize + gridSize / 2
                 );
-                ctx.fill();
+            }
+            
+            // Helper function untuk menggambar bintang
+            function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius) {
+                let rot = Math.PI / 2 * 3;
+                let x = cx;
+                let y = cy;
+                let step = Math.PI / spikes;
                 
-                // Food glow effect for higher levels
-                if (level >= 3) {
-                    ctx.fillStyle = foodGlow;
-                    ctx.beginPath();
-                    ctx.arc(
-                        food.x * gridSize + gridSize / 2,
-                        food.y * gridSize + gridSize / 2,
-                        gridSize / 3,
-                        0,
-                        Math.PI * 2
-                    );
-                    ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - outerRadius);
+                
+                for (let i = 0; i < spikes; i++) {
+                    x = cx + Math.cos(rot) * outerRadius;
+                    y = cy + Math.sin(rot) * outerRadius;
+                    ctx.lineTo(x, y);
+                    rot += step;
+                    
+                    x = cx + Math.cos(rot) * innerRadius;
+                    y = cy + Math.sin(rot) * innerRadius;
+                    ctx.lineTo(x, y);
+                    rot += step;
                 }
                 
-                // Food sparkle for highest levels
-                if (level >= 5) {
-                    ctx.fillStyle = 'white';
-                    ctx.beginPath();
-                    ctx.arc(
-                        food.x * gridSize + gridSize / 2 - 3,
-                        food.y * gridSize + gridSize / 2 - 3,
-                        2,
-                        0,
-                        Math.PI * 2
-                    );
-                    ctx.fill();
-                }
+                ctx.lineTo(cx, cy - outerRadius);
+                ctx.closePath();
+            }
+            
+            // Helper function untuk warna
+            function lightenColor(color, percent) {
+                const num = parseInt(color.replace("#", ""), 16);
+                const amt = Math.round(2.55 * percent);
+                const R = (num >> 16) + amt;
+                const G = (num >> 8 & 0x00FF) + amt;
+                const B = (num & 0x0000FF) + amt;
+                return `#${(
+                    0x1000000 +
+                    (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+                    (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+                    (B < 255 ? (B < 1 ? 0 : B) : 255)
+                ).toString(16).slice(1)}`;
+            }
+            
+            function darkenColor(color, percent) {
+                const num = parseInt(color.replace("#", ""), 16);
+                const amt = Math.round(2.55 * percent);
+                const R = (num >> 16) - amt;
+                const G = (num >> 8 & 0x00FF) - amt;
+                const B = (num & 0x0000FF) - amt;
+                return `#${(
+                    0x1000000 +
+                    (R > 0 ? (R < 255 ? R : 255) : 0) * 0x10000 +
+                    (G > 0 ? (G < 255 ? G : 255) : 0) * 0x100 +
+                    (B > 0 ? (B < 255 ? B : 255) : 0)
+                ).toString(16).slice(1)}`;
             }
             
             // Update game state
@@ -1830,7 +1973,6 @@ function initKantinLogic() {
                 
                 // Check wall collision
                 if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight) {
-                    playSound(200, 0.5, 'square'); // Low sound for crash
                     gameOver();
                     return;
                 }
@@ -1838,7 +1980,6 @@ function initKantinLogic() {
                 // Check self collision
                 for (let segment of snake) {
                     if (head.x === segment.x && head.y === segment.y) {
-                        playSound(150, 0.5, 'sawtooth'); // Different sound for self-collision
                         gameOver();
                         return;
                     }
@@ -1849,13 +1990,22 @@ function initKantinLogic() {
                 
                 // Check food collision
                 if (head.x === food.x && head.y === food.y) {
-                    // Increase score
-                    score += 10;
+                    // Increase score based on food points
+                    score += food.points;
                     scoreDisplay.textContent = score;
                     lengthDisplay.textContent = snake.length;
                     
-                    // Play eating sound
-                    playSound(800, 0.2, 'sine');
+                    // Show notification for different foods
+                    let foodName = '';
+                    switch(food.type) {
+                        case 0: foodName = 'Makanan Biasa'; break;
+                        case 1: foodName = 'Makanan Bintang'; break;
+                        case 2: foodName = 'Makanan Segitiga'; break;
+                        case 3: foodName = 'Makanan Kotak'; break;
+                        case 4: foodName = 'Makanan Diamond'; break;
+                    }
+                    
+                    showNotification(`${foodName}! +${food.points} poin`, 'success');
                     
                     // Check if level completed
                     if (score >= targetScore) {
@@ -1880,19 +2030,13 @@ function initKantinLogic() {
                 levelDisplay.textContent = level;
                 targetScoreDisplay.textContent = targetScore;
                 
-                // Play level up sound
-                playSound(1200, 0.3, 'triangle');
-                
                 // Show level up notification
-                showNotification(`Level ${level}! Target: ${targetScore} poin`);
+                showNotification(`Level ${level}! Target: ${targetScore} poin`, 'success');
                 
-                // Change snake color for visual feedback
-                setTimeout(() => {
-                    // Flash effect
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    setTimeout(draw, 100);
-                }, 300);
+                // Flash effect
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                setTimeout(draw, 100);
             }
             
             // Game loop
@@ -1911,18 +2055,16 @@ function initKantinLogic() {
                 startBtn.textContent = 'Mulai Game';
                 pauseBtn.textContent = 'Jeda';
                 
-                // Play longer game over sound
-                playSound(300, 1, 'sawtooth');
-                
                 // Update high score
                 if (score > highScore) {
                     highScore = score;
                     localStorage.setItem('snakeHighScore', highScore);
-                    highScoreDisplay.textContent = `Rekor: ${highScore}`;
+                    highScoreDisplay.textContent = highScore;
+                    showNotification(`Rekor Baru! ${score} poin`, 'success');
                 }
                 
                 // Draw game over screen
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
                 ctx.fillStyle = 'white';
@@ -1937,17 +2079,21 @@ function initKantinLogic() {
             
             // Event listeners for controls
             document.addEventListener('keydown', (e) => {
-                switch(e.key) {
-                    case 'ArrowUp':
+                switch(e.key.toLowerCase()) {
+                    case 'arrowup':
+                    case 'w':
                         if (direction !== 'down') nextDirection = 'up';
                         break;
-                    case 'ArrowDown':
+                    case 'arrowdown':
+                    case 's':
                         if (direction !== 'up') nextDirection = 'down';
                         break;
-                    case 'ArrowLeft':
+                    case 'arrowleft':
+                    case 'a':
                         if (direction !== 'right') nextDirection = 'left';
                         break;
-                    case 'ArrowRight':
+                    case 'arrowright':
+                    case 'd':
                         if (direction !== 'left') nextDirection = 'right';
                         break;
                 }
@@ -1997,575 +2143,6 @@ function initKantinLogic() {
             draw();
         }
         
-        // Game 3 Implementation: Memancing Ikan dengan Pilihan Pancingan & Level
-        function initGame3() {
-            const canvas = document.getElementById('gameCanvas3');
-            const ctx = canvas.getContext('2d');
-            const startBtn = document.getElementById('startGame3');
-            const resetBtn = document.getElementById('resetGame3');
-            const scoreDisplay = document.getElementById('score3');
-            const targetScoreDisplay = document.getElementById('target-score3');
-            const levelDisplay = document.getElementById('level3');
-            const fishCountDisplay = document.getElementById('fishCount3');
-            const timeDisplay = document.getElementById('time3');
-            
-            let gameRunning = false;
-            let score = 0;
-            let level = 1;
-            let targetScore = 100;
-            let fishCaught = 0;
-            let timeLeft = 60;
-            let selectedRod = 'basic'; // Default rod
-            let fishingLine = { x: canvas.width/2, y: 50, length: 0, maxLength: 300, speed: 5, casting: false, reeling: false };
-            let hook = { x: canvas.width/2, y: 50, radius: 8 };
-            let fishes = [];
-            let bubbles = [];
-            let gameLoopId = null;
-            
-            // Rod properties
-            const rodProperties = {
-                basic: { speed: 5, fishMultiplier: 1, pointMultiplier: 1, color: '#3498db', name: 'Basic' },
-                pro: { speed: 6, fishMultiplier: 1.2, pointMultiplier: 1.2, color: '#9b59b6', name: 'Pro' },
-                legendary: { speed: 7, fishMultiplier: 1.4, pointMultiplier: 1.4, color: '#f39c12', name: 'Legendary' },
-                golden: { speed: 8, fishMultiplier: 1.6, pointMultiplier: 2, color: '#f1c40f', name: 'Golden' },
-                dragon: { speed: 9, fishMultiplier: 1.8, pointMultiplier: 3, color: '#e74c3c', name: 'Dragon' }
-            };
-            
-            // Initialize game
-            function init() {
-                score = 0;
-                level = 1;
-                targetScore = 100;
-                fishCaught = 0;
-                timeLeft = 60;
-                selectedRod = 'basic';
-                fishingLine = { x: canvas.width/2, y: 50, length: 0, maxLength: 300, speed: rodProperties[selectedRod].speed, casting: false, reeling: false };
-                hook = { x: canvas.width/2, y: 50, radius: 8 };
-                fishes = [];
-                bubbles = [];
-                
-                scoreDisplay.textContent = score;
-                targetScoreDisplay.textContent = targetScore;
-                levelDisplay.textContent = level;
-                fishCountDisplay.textContent = fishCaught;
-                timeDisplay.textContent = `Waktu: ${timeLeft}s`;
-                
-                // Create initial fishes based on level
-                for (let i = 0; i < 5 + level; i++) {
-                    createFish();
-                }
-                
-                // Create initial bubbles
-                for (let i = 0; i < 15; i++) {
-                    createBubble();
-                }
-                
-                // Update rod buttons
-                updateRodButtons();
-            }
-            
-            // Update rod selection buttons
-            function updateRodButtons() {
-                document.querySelectorAll('.fishing-rod-select').forEach(button => {
-                    const rodType = button.getAttribute('data-rod');
-                    if (rodType === selectedRod) {
-                        button.style.boxShadow = '0 0 10px rgba(255,255,255,0.8)';
-                        button.style.transform = 'scale(1.05)';
-                    } else {
-                        button.style.boxShadow = 'none';
-                        button.style.transform = 'scale(1)';
-                    }
-                });
-            }
-            
-            // Create a fish
-            function createFish() {
-                const fishTypes = [
-                    { color: '#ff6b6b', size: 30, points: 10, rarity: 1 }, // Common red fish
-                    { color: '#4ecdc4', size: 40, points: 20, rarity: 2 }, // Uncommon blue fish
-                    { color: '#ffe66d', size: 25, points: 15, rarity: 1 }, // Common yellow fish
-                    { color: '#95e1d3', size: 35, points: 25, rarity: 2 }, // Uncommon green fish
-                    { color: '#a29bfe', size: 45, points: 50, rarity: 3 }, // Rare purple fish
-                    { color: '#fd79a8', size: 50, points: 75, rarity: 4 }  // Epic pink fish
-                ];
-                
-                // Higher levels have more rare fish
-                let availableFishTypes = fishTypes;
-                if (level >= 5) {
-                    availableFishTypes = fishTypes; // All fish available
-                } else if (level >= 3) {
-                    availableFishTypes = fishTypes.filter(f => f.rarity <= 3); // Up to rare
-                } else {
-                    availableFishTypes = fishTypes.filter(f => f.rarity <= 2); // Up to uncommon
-                }
-                
-                // Weighted random based on rarity
-                const weights = availableFishTypes.map(f => 1/f.rarity);
-                const totalWeight = weights.reduce((a, b) => a + b, 0);
-                let random = Math.random() * totalWeight;
-                
-                let selectedType;
-                for (let i = 0; i < availableFishTypes.length; i++) {
-                    random -= weights[i];
-                    if (random <= 0) {
-                        selectedType = availableFishTypes[i];
-                        break;
-                    }
-                }
-                
-                const fishSpeed = 1 + (level * 0.2) + Math.random() * 0.5;
-                
-                fishes.push({
-                    x: Math.random() * (canvas.width - 100) + 50,
-                    y: Math.random() * (canvas.height - 200) + 150,
-                    width: selectedType.size,
-                    height: selectedType.size * 0.5,
-                    color: selectedType.color,
-                    basePoints: selectedType.points,
-                    points: Math.floor(selectedType.points * rodProperties[selectedRod].pointMultiplier),
-                    speedX: (Math.random() - 0.5) * fishSpeed,
-                    speedY: (Math.random() - 0.5) * (fishSpeed * 0.5),
-                    direction: Math.random() > 0.5 ? 1 : -1,
-                    rarity: selectedType.rarity
-                });
-            }
-            
-            // Create a bubble
-            function createBubble() {
-                bubbles.push({
-                    x: Math.random() * canvas.width,
-                    y: canvas.height + Math.random() * 100,
-                    radius: Math.random() * 10 + 5,
-                    speed: Math.random() * 2 + 1
-                });
-            }
-            
-            // Draw background
-            function drawBackground() {
-                // Water gradient based on level
-                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                if (level >= 5) {
-                    gradient.addColorStop(0, '#5dade2');
-                    gradient.addColorStop(1, '#1a5276');
-                } else if (level >= 3) {
-                    gradient.addColorStop(0, '#7fb3d5');
-                    gradient.addColorStop(1, '#2c3e50');
-                } else {
-                    gradient.addColorStop(0, '#87ceeb');
-                    gradient.addColorStop(1, '#1e90ff');
-                }
-                ctx.fillStyle = gradient;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw seaweed
-                ctx.fillStyle = level >= 3 ? '#1d8348' : '#2e8b57';
-                for (let i = 0; i < 5; i++) {
-                    const x = i * 150 + 30;
-                    drawSeaweed(x, canvas.height - 50, 60 + (level * 5));
-                }
-                
-                // Draw sand bottom
-                ctx.fillStyle = level >= 3 ? '#b7950b' : '#f4a460';
-                ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
-                
-                // Draw sand details
-                ctx.fillStyle = level >= 3 ? '#9c640c' : '#d2691e';
-                for (let i = 0; i < 20; i++) {
-                    const x = Math.random() * canvas.width;
-                    const y = canvas.height - 30 + Math.random() * 20;
-                    const size = Math.random() * 8 + 3;
-                    ctx.beginPath();
-                    ctx.arc(x, y, size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-            
-            // Draw seaweed
-            function drawSeaweed(x, y, height) {
-                ctx.beginPath();
-                ctx.moveTo(x, y);
-                ctx.bezierCurveTo(x - 20, y - height/2, x + 20, y - height/1.5, x, y - height);
-                ctx.bezierCurveTo(x + 20, y - height/1.5, x - 20, y - height/2, x, y);
-                ctx.fill();
-                
-                // Seaweed details
-                ctx.strokeStyle = level >= 3 ? '#186a3b' : '#228b22';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(x, y);
-                ctx.lineTo(x, y - height);
-                ctx.stroke();
-            }
-            
-            // Draw fishing rod
-            function drawFishingRod() {
-                const rodColor = rodProperties[selectedRod].color;
-                
-                // Fishing rod
-                ctx.strokeStyle = rodColor;
-                ctx.lineWidth = 5;
-                ctx.beginPath();
-                ctx.moveTo(30, 30);
-                ctx.lineTo(canvas.width/2, 50);
-                ctx.stroke();
-                
-                // Fishing line
-                ctx.strokeStyle = 'white';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(canvas.width/2, 50);
-                ctx.lineTo(hook.x, hook.y);
-                ctx.stroke();
-                
-                // Hook with rod color accent
-                ctx.fillStyle = rodColor;
-                ctx.beginPath();
-                ctx.arc(hook.x, hook.y, hook.radius, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Hook barb
-                ctx.strokeStyle = rodColor;
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(hook.x + hook.radius, hook.y);
-                ctx.lineTo(hook.x + hook.radius + 8, hook.y - 5);
-                ctx.stroke();
-                
-                // Rod handle
-                ctx.fillStyle = '#8b4513';
-                ctx.beginPath();
-                ctx.arc(30, 30, 8, 0, Math.PI * 2);
-                ctx.fill();
-            }
-            
-            // Draw fishes
-            function drawFishes() {
-                fishes.forEach(fish => {
-                    // Fish body with rarity outline
-                    ctx.fillStyle = fish.color;
-                    ctx.beginPath();
-                    ctx.ellipse(
-                        fish.x, fish.y,
-                        fish.width/2, fish.height/2,
-                        0, 0, Math.PI * 2
-                    );
-                    ctx.fill();
-                    
-                    // Rarity outline
-                    if (fish.rarity >= 3) {
-                        ctx.strokeStyle = fish.rarity === 4 ? '#f1c40f' : '#9b59b6';
-                        ctx.lineWidth = 3;
-                        ctx.beginPath();
-                        ctx.ellipse(
-                            fish.x, fish.y,
-                            fish.width/2 + 2, fish.height/2 + 2,
-                            0, 0, Math.PI * 2
-                        );
-                        ctx.stroke();
-                    }
-                    
-                    // Fish tail
-                    ctx.beginPath();
-                    ctx.moveTo(fish.x - fish.width/2 * fish.direction, fish.y);
-                    ctx.lineTo(fish.x - fish.width/2 * fish.direction - 15 * fish.direction, fish.y - 10);
-                    ctx.lineTo(fish.x - fish.width/2 * fish.direction - 15 * fish.direction, fish.y + 10);
-                    ctx.closePath();
-                    ctx.fill();
-                    
-                    // Fish eye
-                    ctx.fillStyle = 'white';
-                    ctx.beginPath();
-                    ctx.arc(
-                        fish.x + fish.width/4 * fish.direction,
-                        fish.y - 3,
-                        4, 0, Math.PI * 2
-                    );
-                    ctx.fill();
-                    
-                    ctx.fillStyle = 'black';
-                    ctx.beginPath();
-                    ctx.arc(
-                        fish.x + fish.width/4 * fish.direction,
-                        fish.y - 3,
-                        2, 0, Math.PI * 2
-                    );
-                    ctx.fill();
-                    
-                    // Fish fins
-                    ctx.fillStyle = fish.color;
-                    ctx.beginPath();
-                    ctx.moveTo(fish.x, fish.y);
-                    ctx.lineTo(fish.x - 10 * fish.direction, fish.y - 10);
-                    ctx.lineTo(fish.x - 5 * fish.direction, fish.y);
-                    ctx.closePath();
-                    ctx.fill();
-                });
-            }
-            
-            // Draw bubbles
-            function drawBubbles() {
-                bubbles.forEach(bubble => {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-                    ctx.beginPath();
-                    ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                    
-                    // Bubble highlight
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-                    ctx.beginPath();
-                    ctx.arc(bubble.x - bubble.radius/3, bubble.y - bubble.radius/3, bubble.radius/3, 0, Math.PI * 2);
-                    ctx.fill();
-                });
-            }
-            
-            // Level up function
-            function levelUp() {
-                level++;
-                targetScore = 100 * level;
-                timeLeft += 30; // Add 30 seconds for new level
-                
-                // Update displays
-                levelDisplay.textContent = level;
-                targetScoreDisplay.textContent = targetScore;
-                
-                // Show level up notification
-                showNotification(`Level ${level}! Target: ${targetScore} poin`);
-                
-                // Add more fish for new level
-                for (let i = 0; i < 3; i++) {
-                    createFish();
-                }
-                
-                // Flash effect
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                setTimeout(() => {
-                    if (gameRunning) {
-                        update();
-                        draw();
-                    }
-                }, 100);
-            }
-            
-            // Update game state
-            function update() {
-                // Update time
-                if (gameRunning) {
-                    timeLeft -= 0.016; // Approximately 60 FPS
-                    timeDisplay.textContent = `Waktu: ${Math.max(0, Math.floor(timeLeft))}s`;
-                }
-                
-                // Check game over
-                if (timeLeft <= 0) {
-                    gameOver();
-                    return;
-                }
-                
-                // Check if level completed
-                if (score >= targetScore) {
-                    levelUp();
-                }
-                
-                // Update fishing line
-                if (fishingLine.casting) {
-                    fishingLine.length += fishingLine.speed;
-                    hook.y += fishingLine.speed;
-                    
-                    if (fishingLine.length >= fishingLine.maxLength || hook.y >= canvas.height - 60) {
-                        fishingLine.casting = false;
-                        fishingLine.reeling = true;
-                    }
-                } else if (fishingLine.reeling) {
-                    fishingLine.length -= fishingLine.speed;
-                    hook.y -= fishingLine.speed;
-                    
-                    if (fishingLine.length <= 0) {
-                        fishingLine.reeling = false;
-                        hook.y = 50;
-                    }
-                }
-                
-                // Update fishes
-                fishes.forEach((fish, index) => {
-                    fish.x += fish.speedX;
-                    fish.y += fish.speedY;
-                    
-                    // Bounce off walls
-                    if (fish.x < fish.width/2 || fish.x > canvas.width - fish.width/2) {
-                        fish.speedX *= -1;
-                        fish.direction *= -1;
-                    }
-                    if (fish.y < 150 || fish.y > canvas.height - 60 - fish.height/2) {
-                        fish.speedY *= -1;
-                    }
-                    
-                    // Check hook collision
-                    const distance = Math.sqrt(
-                        Math.pow(fish.x - hook.x, 2) + Math.pow(fish.y - hook.y, 2)
-                    );
-                    
-                    if (distance < fish.width/2 + hook.radius && fishingLine.reeling) {
-                        // Fish caught!
-                        score += fish.points;
-                        fishCaught++;
-                        fishes.splice(index, 1);
-                        createFish(); // Replace caught fish
-                        
-                        scoreDisplay.textContent = score;
-                        fishCountDisplay.textContent = fishCaught;
-                        
-                        // Show catch notification
-                        if (fish.rarity >= 3) {
-                            showNotification(`Ikan langka tertangkap! +${fish.points} poin`, 'success');
-                        }
-                    }
-                });
-                
-                // Update bubbles
-                bubbles.forEach((bubble, index) => {
-                    bubble.y -= bubble.speed;
-                    
-                    // Remove if off screen
-                    if (bubble.y < -bubble.radius) {
-                        bubbles.splice(index, 1);
-                        createBubble();
-                    }
-                });
-                
-                // Add new bubbles occasionally
-                if (Math.random() < 0.02) {
-                    createBubble();
-                }
-                
-                // Add new fish occasionally based on rod multiplier
-                if (Math.random() < 0.01 * rodProperties[selectedRod].fishMultiplier) {
-                    createFish();
-                }
-            }
-            
-            // Game loop
-            function gameLoop() {
-                if (!gameRunning) return;
-                
-                // Clear canvas
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                update();
-                
-                // Draw everything
-                drawBackground();
-                drawBubbles();
-                drawFishes();
-                drawFishingRod();
-                
-                // Draw rod name
-                ctx.fillStyle = 'white';
-                ctx.font = '16px Arial';
-                ctx.fillText(`Pancingan: ${rodProperties[selectedRod].name}`, 20, 80);
-                
-                requestAnimationFrame(gameLoop);
-            }
-            
-            // Game over
-            function gameOver() {
-                gameRunning = false;
-                startBtn.textContent = 'Mulai Game';
-                
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = 'white';
-                ctx.font = '30px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('Game Over!', canvas.width/2, canvas.height/2 - 50);
-                ctx.font = '20px Arial';
-                ctx.fillText(`Skor: ${score}`, canvas.width/2, canvas.height/2 - 10);
-                ctx.fillText(`Level: ${level}`, canvas.width/2, canvas.height/2 + 20);
-                ctx.fillText(`Ikan: ${fishCaught}`, canvas.width/2, canvas.height/2 + 50);
-            }
-            
-            // Cast fishing line
-            function castLine() {
-                if (!fishingLine.casting && !fishingLine.reeling) {
-                    fishingLine.casting = true;
-                }
-            }
-            
-            // Select fishing rod
-            function selectRod(rodType) {
-                selectedRod = rodType;
-                fishingLine.speed = rodProperties[selectedRod].speed;
-                updateRodButtons();
-                
-                if (gameRunning) {
-                    showNotification(`Pancingan ${rodProperties[selectedRod].name} dipilih!`);
-                }
-            }
-            
-            // Event listeners for rod selection
-            document.querySelectorAll('.fishing-rod-select').forEach(button => {
-                button.addEventListener('click', function() {
-                    const rodType = this.getAttribute('data-rod');
-                    selectRod(rodType);
-                });
-            });
-            
-            // Event listeners
-            canvas.addEventListener('click', castLine);
-            
-            startBtn.addEventListener('click', () => {
-                if (!gameRunning) {
-                    if (startBtn.textContent === 'Mulai Game') {
-                        init();
-                    }
-                    gameRunning = true;
-                    startBtn.textContent = 'Jeda Game';
-                    gameLoop();
-                } else {
-                    gameRunning = false;
-                    startBtn.textContent = 'Lanjutkan';
-                }
-            });
-            
-            resetBtn.addEventListener('click', () => {
-                gameRunning = false;
-                startBtn.textContent = 'Mulai Game';
-                init();
-                
-                // Draw initial state
-                drawBackground();
-                drawBubbles();
-                drawFishes();
-                drawFishingRod();
-                
-                ctx.fillStyle = 'white';
-                ctx.font = '24px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('Memancing Ikan', canvas.width/2, canvas.height/2 - 30);
-                ctx.font = '16px Arial';
-                ctx.fillText('Pilih pancingan lalu klik "Mulai Game"', canvas.width/2, canvas.height/2 + 10);
-                ctx.fillText('Klik di mana saja untuk melempar kail', canvas.width/2, canvas.height/2 + 40);
-            });
-            
-            // Initialize rod buttons
-            updateRodButtons();
-            
-            // Draw initial screen
-            init();
-            drawBackground();
-            drawBubbles();
-            drawFishes();
-            drawFishingRod();
-            
-            ctx.fillStyle = 'white';
-            ctx.font = '24px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('Memancing Ikan', canvas.width/2, canvas.height/2 - 30);
-            ctx.font = '16px Arial';
-            ctx.fillText('Pilih pancingan lalu klik "Mulai Game"', canvas.width/2, canvas.height/2 + 10);
-            ctx.fillText('Klik di mana saja untuk melempar kail', canvas.width/2, canvas.height/2 + 40);
-        }
-        
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -2575,8 +2152,7 @@ function initKantinLogic() {
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // In real implementation, you would send this to a server
-            alert(`Terima kasih ${name}! Pesan Anda telah dikirim. Saya akan membalas ke ${email} segera.`);
+            showNotification(`Terima kasih ${name}! Pesan Anda telah dikirim.`, 'success');
             
             // Reset form
             document.getElementById('contactForm').reset();
